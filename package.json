@@ -1,0 +1,36 @@
+{
+  "name": "oauth-cli",
+  "version": "0.1.0",
+  "description": "Generic OAuth2 CLI + MCP Server — authenticate with any OAuth2 provider, securely store tokens, and expose an MCP server for AI-agent integration",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "oauth-cli": "./dist/index.js"
+  },
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "mcp": "tsx src/mcp-server.ts"
+  },
+  "keywords": ["oauth2", "cli", "mcp", "authentication"],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "@napi-rs/keyring": "^1.1.6",
+    "commander": "^13.1.0",
+    "open": "^10.1.0",
+    "simple-oauth2": "^5.1.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "@types/simple-oauth2": "^5.0.7",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.6"
+  }
+}
