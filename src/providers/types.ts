@@ -22,6 +22,7 @@ export const ProviderConfigSchema = z.object({
   api_base_url: z.string().url("Must be a valid URL").optional(),
   token_request_headers: z.record(z.string()).optional(),
   authorization_method: z.enum(["header", "body"]).default("header"),
+  scope_separator: z.string().default(" "),
 });
 
 export type ProviderConfig = z.infer<typeof ProviderConfigSchema>;

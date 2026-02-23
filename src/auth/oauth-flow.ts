@@ -69,12 +69,15 @@ export async function executeOAuthFlow(
     },
     options: {
       authorizationMethod: providerConfig.authorization_method || "header",
+      scopeSeparator: providerConfig.scope_separator || " ",
     },
   });
 
+  const scopeSep = providerConfig.scope_separator || " ";
+
   const authParams: Record<string, string> = {
     redirect_uri: redirectUri,
-    scope: scopes.join(" "),
+    scope: scopes.join(scopeSep),
     state,
     ...(providerConfig.custom_params || {}),
   };
@@ -127,7 +130,7 @@ export async function executeOAuthFlow(
     const tokenConfig: Record<string, unknown> = {
       code: callbackResult.code,
       redirect_uri: redirectUri,
-      scope: scopes.join(" "),
+      scope: scopes.join(scopeSep),
     };
 
     if (codeVerifier) {
